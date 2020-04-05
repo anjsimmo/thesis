@@ -1,0 +1,72 @@
+%\appendix
+
+\openchapterblock
+
+\chapter{A Platform for Spatio-Temporal Sport Analysis}
+
+\section{Data Extraction Requests}
+\label{appendixsec:data-extraction-request}
+
+\subsubsection{Analysis 1 - Metadata and Data Sample}
+This analysis will reveal a sample of each data file to help us understand the data structure, without revealing the entire dataset.
+
+\begin{itemize}
+  \item A sample of the first 10 rows and last 10 rows will be extracted for each file.
+  \item A summary of values in each column will be extracted (e.g. frequency of each category, mean, standard deviation).
+\end{itemize}
+
+\subsubsection{Analysis 2b - Formation Profiles (v2)}
+This analysis will extract team formations in a way that allows studying the team, but not individuals.
+
+\begin{itemize}
+  \item Data will be resampled to 1Hz (1 sample per second) to reduce risk of revealing detailed player movements detected by accelerometers.
+  \item Team formations will be represented as a ``point cloud'' that includes non-identifiable dots for the location of each player in the formation, but does not allow tracing the position of individual players over the full course of the match (i.e. even if one knows the player position at a certain time, they will lose track of which player is which whenever two player paths cross over each other).
+\end{itemize}
+
+\textbf{v2}: Includes fix to handle time jumps backward (up to 1 second) or forward (up to 11 minutes) occurring in sensor data.
+
+\subsubsection{Analysis 3 - Signal Quality}
+This analysis will extract the time of GPS fixes and the number of satellites, but not the GPS data (latitude, longitude, speed, acceleration, etc.) itself. Columns to be extracted:
+
+\begin{itemize}
+  \item Player (e.g. "A1")
+  \item Round
+  \item Time of GPS fix (e.g. "15:05.4")
+  \item Sats column (e.g. "T 4")
+\end{itemize}
+
+
+\section{Review of Team Shape Metrics found in the Literature}
+\label{appendixsec:measures-of-team-shape}
+
+\subsubsection{Stretch Index}
+\label{sec:stretch-index}
+
+% TODO: State of the art in AFL (ball position only). Spatio-temporal techniques used in other sports (clustering, simulations). Search for similar work in other sports looking at spread/dispersion of team formations.
+
+% Yue2008 uses video
+Yue et al. 2008 \cite{Yue2008} demonstrated mathematical techniques for team-level analysis of \soccer{} player data. As a measure of team spread, they defined the ``instantaneous radius'' of the team to be the average distance of players from the centroid of the team. Bourbousson et al. 2010 \cite{Bourbousson2010b} analysed basketball team data, and as a measure of team spread, they defined the ``stretch index'' in a manner that appears equivalent to Yue et al.'s earlier definition of ``instantaneous radius'' \cite{Yue2008}. It is also sometimes referred to as the ``dispersion'' \cite{Frias2014}.
+
+Variations have been proposed in the literature. Ma\c{c}\~{a}s and Sampaio 2012 \cite{Macas2012} proposed measuring the minimum and maximum distance of players from the centroid of the team. Clemente et al. 2013 \cite{Clemente2013a} suggested weighting the calculation of the team centre and spread by the distance players are from the ball (giving more weight to players that are closer to the ball).
+
+% Yue et al. 2008 \cite{Yue2008} suggest using the derivative of spread with respect to time to measure the rate of spread.
+
+\subsubsection{Surface Area}
+
+% Frencken2011 uses LPS
+Frencken et al. 2011 \cite{Frencken2011} (following a preliminary study by Frencken et al. 2008 \cite{Frencken2008}) analysed 5-a-side \soccer{} player data and propose using a convex hull to measure the surface area of the team shape (excluding the goal-keeper). % Frencken2011 says "4-a-side", but Clemente2013a says "(5-a-side)", which makes more sense (diagrams show also a goal keeper)
+
+Clemente et al. 2013 \cite{Clemente2013a} (method later republished \cite{Clemente2013c}) suggested a variation of surface area that they denote ``effective area'', which subtracts areas controlled by the opposition from the calculation. Clemente et al. demonstrated this for an under-13 7-a-side \soccer{} district final, and later performed a follow up study of three official 11-a-side \soccer{} matches \cite{Clemente2013b}.
+
+\subsubsection{Length and Width}
+
+Folgado et al. 2014 \cite{Folgado2014} defined team length, width and length-to-width ratio, which they used to compare under-9, under-11 and under-13 \soccer{}. These techniques were reused by Frias and Duarte 2014 \cite{Frias2014} who examined two-team GPS data in small-sided youth \soccer{} games. Frias and Duarte created a custom Matlab application to calculate team surface area, stretch index, and length-to-width ratio. These were analysed to examine the effects of two different coaching interventions.
+
+% Nothing to do with length and width. Has been cited earlier in list of GPS studies.
+%Silva et al. 2016 \cite{Silva2016} examine under-15 \soccer{} GPS data using ``dispersion'' (stretch index), separateness, coupling strength and time delays for 3-a-side, 4-a-side and 5-aside games.
+
+\subsubsection{Spatial Variability}
+
+Couceiro et al. 2014 \cite{Couceiro2014} proposed using Shannon Entropy \cite{Shannon1948} to quantify the level of variability in a heat-map of player position. Specifically, they applied Shannon Entropy to the context of sport by using it to measure the uncertainty as to which point on the field would be occupied by a player (without consideration of player roles).
+
+\closechapterblock

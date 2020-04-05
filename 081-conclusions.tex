@@ -1,0 +1,136 @@
+\chapter{Conclusions}
+\label{ch:conclusions}
+\startchapter
+
+This thesis set out to bridge the gap between raw position sensor measurements of individuals and high level strategic insights about group formations and behaviours. Doing so required a multi-disciplinary perspective spanning the fields of software engineering, metamodelling, information theory, data provenance, data privacy, cartography, information visualisation, and sport science. De-identification and spatio-temporal normalisation were identified as key transformations necessary to bridge this gap, which were poorly supported by existing approaches.
+
+The approaches proposed to support these transformations were applied to develop a computational pipeline that de-identifies GPS player position tracking data, reprojects the data relative to the nearest sport field, and allows synchronisation with other available sources. This serves as a platform for spatio-temporal analysis, which supports both direct visual investigation, as well as quantitative spatio-temporal analysis such as the investigation of team spread and game speed.
+
+\pagebreak{}
+
+\section{Contributions} \label{sec:conclusions-contributions}
+
+This thesis made the following contributions:
+
+% Copied from Chapter summaries
+
+\textit{Elaborated in \chref{ch:modelling}:}
+\begin{enumerate}
+  \item Structured AFL jargon into a formal domain model of consistent terminology, and used this to identify variables that form part of the game state. The full list of identified variables provides a holistic understanding of game state, and can increase awareness of the simplifying assumptions made by current sport analysis models.
+  \item Applied information theory to sport in order to provide a mathematically rigorous perspective for understanding the role of sport performance analysis systems within the larger sport context. Information theory was used to formalise the objective of performance analysis systems into a single formula, which states that the goal is to ensure information is valuable yet not already known to a coach, and incorporates the need to transmit this over limited human information channels.
+  \item Provided an abstract data model that permits modelling both dense and sparse spatio-temporal sport datasets, and draws attention to all required accuracy attributes that need to be specified in order to reason about the confidence of interpretations made from the dataset.
+  \setcounter{contribnum}{\value{enumi}}
+\end{enumerate}
+
+\textit{Elaborated in \chref{ch:prov}:}
+\begin{enumerate}
+  \setcounter{enumi}{\value{contribnum}}
+  \item Provided an analysis of the data provenance needs of the sport domain, and evaluated existing data provenance tools against these criteria. A customised data provenance notation for sport was proposed in order to ease uptake for sport performance analysts without a computer science background.
+  \setcounter{contribnum}{\value{enumi}}
+\end{enumerate}
+
+\newpage{}
+
+\textit{Elaborated in \chref{ch:de-identification}:}
+\begin{enumerate}
+  \setcounter{enumi}{\value{contribnum}}
+  \item Exposed the prevalence of improper de-identification methods used in sport research, and demonstrated that GPS player tracking data is particularly prone to re-identification. An interaction model was proposed to help improve ethical conduct of research by allowing the researcher to specify the de-identification operations in cases where the data custodian lacks the technical resources to strongly de-identify data themselves prior to data hand-over. The proposed approach was applied to GPS player tracking data held by an AFL club to obtain the non-identifiable data used in this thesis.
+  \setcounter{contribnum}{\value{enumi}}
+\end{enumerate}
+
+\textit{Elaborated in \chref{ch:spat-trans}:}
+\begin{enumerate}
+  \setcounter{enumi}{\value{contribnum}}
+  \item Proposed a novel method for representing spatio-temporal reference frames as geographic objects. This allows GIS novices, such as sport performance analysts, to configure reference frames without the need for deep conceptual knowledge of cartographic projections. It also facilitates partial automation (e.g. reprojecting GPS data to the closest sport field), thus resulting in time savings when the analysis involves multiple reference frames (e.g. a season of GPS tracking data involving multiple sport fields).
+  \setcounter{contribnum}{\value{enumi}}
+\end{enumerate}
+
+\textit{Elaborated in \chref{ch:integration}:}
+\begin{enumerate}
+  \setcounter{enumi}{\value{contribnum}}
+  \item Developed a platform for spatio-temporal analysis of team sport, demonstrated through AFL as an example. Feedback from an elite AFL club confirms that the techniques proposed are likely to offer useful insights.
+  \item Performed an analysis of team shape and game speed in AFL. Team spread was found to strongly correlate with game speed.
+\end{enumerate}
+
+% Findings were a bit fluffy (only included as a defence against possibility that examiners will question how research questions were addressed). Supervisor suggested better to remove.
+% \section{Findings}
+%
+% \textit{Research Question 1: Can team-level GPS analysis provide useful information to sport researchers and practitioners beyond what they already know from manual observation, video analysis, traditional statistics, and (individual) player GPS monitoring?}
+%
+% As set out in \chref{ch:modelling} (Modelling), the role of computational pipelines for spatio-temporal analysis of team sport is to provide coaches with insights that they cannot directly observe due to the limits of human information and processing channels. The feedback received when the system was presented to analysts at an elite AFL club suggests that quantitative investigation of team spread is an example of such information sought after by those at clubs. The analysis of team spread and game style presented in this thesis is an example of such an analysis, that is facilitated by the platform.
+%
+% \textit{Research Question 2: How can GPS player tracking data be processed to extract meaningful team-level insights without compromising individual privacy?}
+%
+% The thesis showed that while traditional de-identification approaches fail to protect participant privacy, and that formal de-identification approaches are un-achievable without complete destruction of data utility, a combination of downsampling and use of a point~cloud representation was able to protect individual privacy while still permitting team-level analysis. Reprojecting the data relative to the field allowed visual comparisons of matches played at different venues. Working in the reprojected coordinates also made it possible to automatically identify players on the interchange bench that needed to be removed prior to quantitative analysis of team shape. The thesis demonstrated the use of team~spread as an example team-based feature derived from GPS tracking data that can offer sport performance analysts new insights into the game that are not available through current metrics that focus on individual players and ball possession.
+
+
+\section{Applications outside of Sport}
+
+%Sport is characteristic of other spatio-temporal processes
+Team sport serves as a test bed for understanding teams in a more general sense. Although the focus of this thesis was predominantly on sport, the methods can be adapted to other domains involving spatio-temporal data relating to group movement. The work in this thesis has influenced collaborative research publications in other areas such as defence, smart homes, and intelligent transport systems.
+%the methods could be adapted to other domains involving spatio-temporal data relating to group movement.
+
+\subsection{Defence}
+
+Defence departments prepare for possible scenarios through computerised war simulation that produces detailed output logging the simulated movements of each vehicle; however, require the ability to translate this simulated tracking data into a form amenable to extracting human insights into the underlying cause.\footnote{Dion Grieger, Martin Wong, Antonio Giardina, Marco Tamassia, Luis Torres, Rajesh Vasa, Kon Mouzakis. ``Towards the Identification and Visualisation of Causal Events to Support the Analysis of Closed-loop Combat Simulations''. In: \textit{ASOR National Conference for the Australian Society of Operations Research and Defence Operations Research Symposium (ASOR/DORS) 2018}. Melbourne, 4--6 December 2018. (In Press)}
+
+% \url{https://www.confer.nz/asor-dors2018/wp-content/uploads/2018/12/book-of-abstracts_web.pdf#page=86}
+While traditionally the ``team invasion'' game classification is only applied to sport, it is also possible to think of a combat scenario as an invasion ``game'' (in the abstract sense). Reference frames could be established with respect to key areas such as shore lines to facilitate comparisons of different battles similar to the reference frames established at sporting venues in this thesis to facilitate comparisons between matches.\footnote{This work was published in a technical report sent to the client; however, it cannot be shared for confidentiality reasons.}
+
+\subsection{Smart Homes}
+
+Internet-of-Things (IoT) enabled smart home systems use sensors placed around the house to respond to movements of individuals. However spurious sensors events can cause the smart-home to trigger messages unintentionally, so it is necessary to process sensor events via a real-time computational pipeline to infer higher-level patterns relating to behaviours, such as triggering a greeting when the resident wakes up, as opposed to triggering on individual motion sensors. Similarly to the team spread versus game speed analysis performed in this thesis, the smart-home situation could benefit from linking the degree to which recent sensor activations are spread out amongst the various rooms of the home to different forms of behaviours.
+
+% \footnote{Niroshinie Fernando, Mohamed Abdelrazek, Roopak Sinha, \underline{Andrew J. Simmons}, Rajesh Vasa, Kon Mouzakis. ``Coping With Uncertainty: Building and Deploying Smart Home Apps'' \textit{(In Submission)}}
+%\todo{Cite IOT paper (once published)}
+
+\subsection{Intelligent Transport Systems}
+
+Transport engineering involves the use of scientific workflows to calibrate transport models with the demand and supply of the transport network from a combination of sensor and survey data. Similarly to the coach's desire to understand the impact of an altered sport team strategy, decision makers need to understand how changes to the transport network and/or traffic signal timings are likely to improve or degrade the overall performance. As with sport, visualising transport network data requires novel approaches that can account for the high-dimensional nature of spatio-temporal data \cite{Simmons2015}.
+
+Following the approach in this thesis to generate a customised data provenance notation for the sport domain, a custom data provenance notation for transport engineering could help facilitate documentation, reuse and traceability of transportation models. This could serve as a step towards automating analysis so that the system could detect and respond to transport network issues in real-time, thus helping to improve the overall efficiency of the network and relieve the load on traffic management centres who would otherwise need to manually intervene.
+
+% \nb{Application of Domain Specific Visual Languages to Transport Engineering is proposed target for postdoc research}
+
+\section{Future Work}
+\label{sec:conclusion-future-work}
+
+\subsection{Intervention Study}
+
+Future work is needed to integrate the system into sport practitioners' workflows so that the system can be formally evaluated within the target domain. Further investigating the relationships identified between team spread and game speed requires coaching interventions to establish causal relationships. Alternatively, a sport simulator could be built in which to trial the interventions.
+%in which to trial the strategies.
+
+%\todo{Mention uncertainty of sensor measurements. GPS is a real problem. How to deal with these from a Bayesian perspective throughout the entire pipeline?}
+
+%\subsection{Probabilistic Programming}
+\subsection{Probabilistic Approach}
+
+Despite the theoretical accuracy attainable using GPS tracking devices under ideal conditions, the analysis of real-world data in \secref{sec:gps-data-selection} demonstrates operational issues with the devices that led to most matches being discarded. The ability to analyse the team as a whole requires that all 22 player tracking devices are functioning correctly and have a reliable signal, thus even a low chance of signal issues on a per-device basis can represent a high chance of issues at a team level. While technological developments such as local positioning systems may largely eliminate these issues for elite teams in future, there will always be some degree of positioning error, and issues are likely to remain for sub-elite teams who cannot afford to invest in more advanced technology. Therefore, an important area for future sport research would be to find techniques to design computational pipelines in a way that accounts for errors. Potential avenues include simulating errors to test the sensitivity of results to positioning errors, a Bayesian approach to infer the most likely behaviour of players given noisy sensor estimates\footnote{A principled approach to this would be to model the prior distribution of movement patterns along with the sensor errors involved in observation of movement, then apply Bayesian inference over this model. John Winn and Christopher M. Bishop, \textit{Model-Based Machine Learning}. \url{http://mbmlbook.com}}, and the use of robust statistics\footnote{Thank you to A/Prof. Tim Wilkin for this suggestion} to reduce the impact of device malfunctions on performance measures.\footnote{An extreme example of a poor performance measure mentioned at the Victoria University Player Tracking Workshop 2019 is maximum player speed, as the maximum player speed recorded is likely to be a result of a measurement anomaly. In contrast, statistics like the median speed are largely unaffected by spurious measurements.}
+
+\subsection{Two Team Perspective}
+
+As AFL clubs see their data as a competitive advantage, they are reluctant to share data, and unwilling to collaborate with other teams in this regard. As such, this thesis worked with only a single team's data, and demonstrated the value that could be extracted from this. As the team's behaviour depends on the behaviour of the opposition, deeper insights could be obtained with opposition GPS data. For example, the team spread analysis performed in this thesis could be calculated for both teams to investigate coupling between the spread of the two teams. Another area would be to detect pairings between players from opposite teams, for example players that are ``tagging'' (following after) a player of the opposite team.
+
+\subsection{Information Gain} \label{sec:conclusioninfogain}
+
+The system developed in this thesis was presented to sport performance analysts at an elite AFL club to obtain feedback as to whether it provided useful insights (an aspect that is difficult to quantify). Alternatively, if a larger dataset were available, the value of team formation information over existing data could have been measured against the information theoretic objective set out in \secref{sec:info-theory-perspective}.
+
+For example, O'Shaughnessy's possession versus possession map \cite{oshaughnessy_possession_2006} estimates could be used as a baseline predictor of the expected outcome of a possession that does not incorporate team formations. Future research could test whether a modified version of the map that incorporates team formation data, e.g. an additional team spread attribute, provides additional predictive benefits in terms of estimating the expected outcome of each possession. The value of this information could be measured according to the \textit{information gain}\footnote{Wikipedia Contributors, 2019, ``Information gain in decision trees'' \url{https://en.wikipedia.org/w/index.php?title=Information_gain_in_decision_trees&oldid=880605287} Accessed:~2019-02-25} offered by adding the team spread attribute as an additional feature to the model.\footnote{As this project was only working with data for one season for a single team, it is not reasonable to reproduce O'Shaughnessy's possession versus possession map estimates that are composed of 350\,000 %thinspace
+data points taken over two AFL seasons (all teams). As adding attributes can cause the model to overfit, one would ideally use a larger dataset than O'Shaughnessy to ensure sufficient data after breaking the data down by the additional team spread attribute.}
+
+% https://math.stackexchange.com/questions/1074276/how-is-logistic-loss-and-cross-entropy-related
+
+% https://en.wikipedia.org/wiki/Gambling_and_information_theory#Side_information
+
+% https://en.wikipedia.org/wiki/Information_gain_in_decision_trees
+% "In information theory and machine learning, information gain is a synonym for Kullback–Leibler divergence; the amount of information gained about a random variable or signal from observing another random variable. However, in the context of decision trees, the term is sometimes used synonymously with mutual information, which is the conditional expected value of the Kullback–Leibler divergence of the univariate probability distribution of one variable from the conditional distribution of this variable given the other one."
+% "In the context of machine learning, D_KL(P||Q) is often called the information gain achieved if Q is used instead of P."
+
+
+\subsection{Deep Sets}
+
+Due to the high-dimensional nature of team formation data, and limited number of events to train on, the analysis in this thesis reduced the team formation data to one dimension (team spread) when performing quantitative analysis in order to prevent overfitting. An alternative would be to apply machine learning techniques with regularisation terms. A challenge with this approach is that de-identified formations are represented as a set rather than the traditional vector input expected by most machine learning algorithms. While a set can be transformed into a vector, this is not ideal, as the arbitrary ordering may impact on the final result. Deep Sets \cite{Zaheer2017} shows that neural networks can be modified to act on sets by constraining the weights such that the results of the neural network are permutation invariant to the ordering of the input vector. Furthermore, the permutation invariance constraint allows the Deep Sets approach to avoid overfitting and achieve better performance on smaller datasets than approaches that ignore this constraint.
+
+\section{Closing Remark}
+
+Currently, access to \afl{} player tracking data is restricted due to commercial and privacy concerns, a situation that is also faced by those seeking to examine other types of sport.\footnote{Thank you to the researchers working with AFL data that discussed these issues with me, as well as the two \soccer{} analysts who independently reached out to me to discuss data sharing and analysis reuse issues that they face} Even as a researcher within a university with agreements in place with both a club and the commercial providers involved, formally obtaining a single season of data for even one team was a lengthy process. This thesis should help ease concerns around data sharing through demonstration that it is possible to extract meaningful team-level insights without compromising individual privacy. While currently spatio-temporal analysis of sport data is only accessible to those with strong technical capabilities, the development of flexible computational pipelines offers the opportunity to empower sport practitioners (and fans) with the tools to freely share and extend analyses so that they can see the game from a new perspective.

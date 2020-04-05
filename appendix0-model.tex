@@ -1,0 +1,185 @@
+\openchapterblock
+
+%\chapter{Data Provenance for Sport}
+\chapter{Modelling}
+\label{appendix:modelling}
+
+\section{Application of Abstract Data Model}
+
+\subsection{Concrete Syntax}\label{concrete-syntax}
+
+This section utilises the abstract data model to define concrete data models
+that describe the schema and meta-data of real-world data. This can be performed
+directly within a general purpose programming language, or through definition of a
+Domain Specific Language (DSL) based on the abstract model to ease definition of the
+concrete models. In respect to its ability to serve as language to describe concrete models,
+the proposed abstract data model serves a similar purpose to a linguistic metamodel.
+However, as K{\"{u}}hne notes in \textit{Matters of (meta-) modeling} \cite{Kuhne2006},
+generalisation is a transitive relationship that directly applies to the end system,
+and thus it is more appropriate to describe the model as ``abstract'' rather than as a true ``metamodel''.
+
+For the purposes of this thesis, a very simple notation will be defined
+for convenience:
+
+\begin{itemize}
+\item
+  The syntax \emph{name} \texttt{:} \emph{type} will be used to annotate
+  specific measurements with their type. For example,
+  \texttt{ball\ position\ :\ Spatial}.
+\item
+  Dense parameters will be represented by postfixing them with a star
+  \texttt{*}. For example, \texttt{time\ :\ Temporal*}.
+\item
+  The syntax \emph{attribute} \texttt{=} \emph{value} will be used to
+  specify the meta-data of measured parameters. In the case of unknown
+  parameters, the token \texttt{UNKNOWN} will be used.
+\end{itemize}
+
+\subsection{Examples}\label{data-collection}
+
+These examples utilise the abstract data model and concrete syntax to
+compare the data collection methods currently available in a range of
+sports.
+
+\subsubsection{Traditional Game Summary}\label{traditional-game-summary}
+
+A human tallies events. Assume that official data is 100\% accurate.
+
+% https://tex.stackexchange.com/questions/150965/insert-symbols-inside-verbatim-mode-latex/156456#156456
+%http://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/listings/listings.pdf
+\begin{lstlisting}[
+  numbers=none,
+  frame=none,
+  mathescape=true,
+  fontadjust=false,
+  basicstyle=\ttfamily
+]
+Traditional Game Summary : Sensor Platform
+  Human : Human Entry
+    event : Event*
+      Granularity = {goal, behind}
+    tally : Count
+      Accuracy = $\pm$0
+\end{lstlisting}
+
+\subsubsection{Database System}\label{database-system}
+
+A human enters detailed game data based on video feeds. The error
+estimates are taken from O'Shaughnessy \cite{oshaughnessy_possession_2006} and Jackson \cite{Jackson2016} who have both held positions at Champion Data, the AFL data provider.
+
+% From Karl Jackson's PhD:
+%   Champion Data has historically claimed an accuracy of 99% accuracy.
+%   This has no basis through rigorous testing,
+%   but it is assumed that it is close to the truth.
+% (Ignore centrebounce macro and hyphenate here for consistency with other examples)
+\begin{alltt}
+Database System : Sensor Platform
+  Human : Human Entry
+    event : Event
+      Accuracy    = 99%
+      Granularity = \{kick, mark, handball, hit, tackle,
+                     goal, behind, pick-up, centre-bounce,
+                     throw-in, out-of-bounds, free-kick\}
+    difficulty : Qualitative
+      Inter-rate Reliability = UNKNOWN
+      Granularity            = \{easy, hard\}
+    ball position : Spatial
+      Error Radius = 5-10 m
+    time : Temporal
+      error rate = 5 s
+    player : ID
+      accuracy = UNKNOWN
+    event sequence order : ID*
+      accuracy = UNKNOWN
+\end{alltt}
+
+\subsubsection{Computer Vision}\label{computer-vision}
+
+Computer vision tracks two types of items: the ball, and the players. A
+common issue with computer vision systems is losing track of the mapping
+between trajectories and player identifiers when two players pass in close
+proximity of each other.\footnote{The error estimates are taken from
+  \url{http://www.stats.com/sportvu/sportvu-basketball-media/}}
+
+\begin{verbatim}
+Computer Vision : Sensor Platform
+  Vision : Sensor
+    time : Temporal*
+      Accuracy    = UNKNOWN
+      Sample Rate = 25 Hz
+    item : ID*
+      accuracy = UNKNOWN
+    position : Spatial
+      Error Radius : UNKNOWN
+\end{verbatim}
+
+\subsubsection{Wearable Tracking Device}\label{wearable-tracking-device}
+
+Unlike computer-vision, wearable devices ensure that the player identifier is
+always 100\% accurate as it is physically attached to the player (unless
+of course, if a player wears the wrong device).\footnote{The sample
+  rates are taken from Catapult Sports circa 2015 (to reflect the technology available during the time-period of the primary dataset used in this thesis) and found in product information released to \url{https://web.archive.org/web/20170910220858/http://www.catapultsports.com:80/system/system/} and
+  \url{https://youtu.be/F9ZsYEyf3HE?t=110}. GPS accuracy is taken from
+  \url{http://www.ga.gov.au/scientific-topics/positioning-navigation/geodesy/geodetic-techniques/global-positioning-systems-gps/gps-consumer}}
+Note that velocity vectors and orientation vectors are treated as
+spatial data. Heart rate could be modelled in a number of ways; however, it was
+decided to model it as a cumulative count, as this avoids ambiguities
+that typically arise when describing variable rates.
+
+\begin{verbatim}
+Wearable Tracking Device : Sensor Platform
+  GPS : Sensor
+    time : Temporal*
+      Accuracy    = UNKNOWN
+      Sample Rate = 10 Hz
+    player : ID*
+      Accuracy = 100%
+    position : Spatial
+      Error Radius = 3 m
+    velocity : Spatial
+      Error Radius = UNKNOWN
+  Accelerometer : Sensor
+    time : Temporal*
+      Accuracy    = UNKNOWN
+      Sample Rate = 1000 Hz
+    player : ID*
+      Accuracy = 100%
+    acceleration vector : Spatial
+      Error Radius  = UNKNOWN
+  Gyroscope : Sensor
+    time : Temporal*
+      Accuracy    = UNKNOWN
+      Sample Rate = 1000 Hz
+    player : ID*
+      Accuracy = 100%
+    orientation vector : Spatial
+      Error Radius  = UNKNOWN
+  Heart Rate Monitor : Sensor
+    time : Temporal*
+      Accuracy    = UNKNOWN
+      Sample Rate = UNKNOWN
+    player : ID*
+      Accuracy = 100%
+    Cumulative Heart Beats : Count
+      Accuracy = UNKNOWN
+\end{verbatim}
+
+% Not used in thesis
+% \subsubsection{Eye Tracking}\label{eye-tracking}
+%
+% Eye tracking is another form of wearable technology. The gaze location
+% error (if known) would be measured in radians.
+%
+% \begin{verbatim}
+% Eye Tracking : Sensor Platform
+%   Eye Goggles : Sensor
+%     Gaze Location : Spatial
+%       Accuracy = UNKNOWN
+%     time : Temporal*
+%       Accuracy    = UNKNOWN
+%       Sample Rate = UNKNOWN
+%     player : ID*
+%       Accuracy = 100%
+% \end{verbatim}
+
+\closechapterblock

@@ -1,0 +1,115 @@
+\section{Competitive Team Sport}
+
+%\subsection{Overview}
+
+Sport coaches are tasked with optimising the performance of their team.
+In two player games, such as chess, \emph{strategy} describes the policy
+that a player uses to select an \emph{action} in response to the current
+game situation. In team games, the strategy is a property of the team,
+and the team action refers to the actions of all team players. Examples
+of strategy include: decisions about when to interchange or substitute
+players (a decision traditionally made by the team coach), which team member to pass
+to (a decision typically made by the player with the ball), or decisions about how
+to structure defence formations (a combination of top-down commands from
+the coach combined with individual player decisions about how to align
+themselves relative to other players).
+
+The coach cannot directly control their players during the game, instead
+they must teach their players the skills and tactics that they need. For
+example, in Australian Rules Football, when the game is in play, the
+coach can only communicate with their team through sending out
+``runners'' onto the field to relay messages between the coach and the
+players, thus this form of communication is only suited as a means of
+feedback to inform future play rather than direct instruction. Even during training sessions,
+modern coaching practices avoid direct instruction of how to perform
+skills, and instead provide a feedback system that allows the players to
+learn from their own experiences. This is because directly instructing
+players how to perform skills leads to ``paralysis by analysis'', particularly when transferred to scenarios involving stress or anxiety \cite{Smeeton2005}, and as such, best coaching practice is to create an environment where ``verbal,
+conscious attention to task rules and procedures is minimised rather
+than maximised''\footnote{Bruce Abernethy, %B. Abernethy,
+  ``Theory to practice - Sports
+  expertise'' in \emph{Sports Coach}, % Magazine} vol.~28 no. 3.
+  Australian Sports Commission.
+  \url{https://web.archive.org/web/20141114115305/http://www.ausport.gov.au/sportscoachmag/skill_analysis2/sports_expertise_from_theory_to_practice}}.
+%  \cite{Farrow2002}. % supports statement, but title relates to video-based training, so may confuse examiners. Quote is from cited Sports Coach Mag, not lit.
+
+For closed skills, such as Olympic target shooting, sport scientists
+have run empirical studies to determine the best type of feedback that
+will allow the athlete to improve as quickly as possible. For example,
+in rifle shooting, an intervention study was performed to evaluate the
+efficacy of feedback delivered through visualisations to inform an
+athlete of rifle barrel movement, and feedback delivered through
+auditory sounds to inform an athlete of the magnitude of their aiming
+error \cite{mononen2017}. Coaches also provide players with
+video feedback that displays the player performing a skill superimposed
+against their past performance, or the ``ideal'' performance of an
+expert. However, comparisons against ideal performance can be
+problematic, as players should be encouraged to follow their own style.
+One famous example demonstrating the importance of personal style over
+comparisons to the commonly accepted ideal, is the invention of the
+``Fosbury Flop'' \cite{bar-eli_developing_2006} high jump style which
+radically challenged what was considered the ideal style at the time.
+
+% https://www.brianmac.co.uk/continuum.htm (definitions of open and closed skills. commercial page. note that their citations are just arbitrary modern textbooks).
+
+In contrast, team invasion games \cite{Werner1996} involve open skills \cite{Wrisberg2007} taking place within an unpredictable environment, and the effect that a player has on the team
+performance cannot be directly measured, as it depends upon the behaviour
+of the rest of the team, as well as the behaviour of the opposition. For
+example, standing in the correct position may deter the opposition from
+scoring, even if the player never comes in contact with the ball. A
+common truism is that the team performance is more than the sum of the
+individual performances. Sport psychologists describe a team using
+factors such as ``team cohesion'',\footnote{Matti Clements, ``How to get your group to become a team'', \textit{Sports Coach}, %Magazine
+Australian Sports Commission. %, vol. 29 no. 2.
+\url{https://web.archive.org/web/20151102065854/http://www.ausport.gov.au/sportscoachmag/psychology2/how_to_get_your_group_to_become_a_team}}
+thus there are properties that are best modelled as belonging
+to the team as a whole rather than to individuals.
+
+Traditionally, coaches have relied on a range of summary statistics (such as number of
+successful passes) as heuristics for evaluating player performance.
+However, relying on summary statistics without taking into account their context can cause misleading results, as they do not fully control for all aspects of game play needed to describe the situations under which the attempts
+took place. For example, players playing against a more difficult opposition may find passing more difficult, but the summary statistics do not account for this. In particular, as teams may reserve key players for more important or difficult games, this can lead to confounding effects.
+
+Spatio-temporal sport analysis techniques offer the ability to better account for the game situations that players find themselves in, thus allowing coaches to provide players with higher quality feedback. Spatio-temporal sport analysis can also be used as a means to investigate the team as a superorganism \cite{Duarte2012}, thus allowing the coach to better understand how the interactions between players affect the overall team behaviour, and to refine the team playing style based upon this knowledge.
+
+\section{Australian Rules Football}
+\label{sec:information-available-to-coaches}
+
+The last section described competitive team sport at a high level from the coach's perspective. This section looks specifically at Australian Rules Football---more commonly known as AFL (Australian Football League) when played by the official rules at the national elite level---which is the sport analysed throughout the rest of the thesis. The purpose of this section is to introduce common game terminology and structure. As the regulations are revised each year by the AFL Commission, the 2015 rules will be described for consistency with the period of the dataset used later in this thesis. Note that a deep knowledge of the game is \textit{not} necessary to read this thesis, and additional details will be provided throughout the thesis as required.
+
+\subsection{Game terminology and structure}
+
+Australian Rules Football is a game played between two competing teams with an oval ball on an oval field. Each team is allowed 18
+players on field, three interchange players off the field, and one substitute\footnote{Under 2015 rules} player.
+
+Goal areas are at the two far ends of the field, and each goal area is marked by two tall inner goal posts and two shorter outer posts. Each team is assigned an attacking goal area at the start of the match, such that teams aim to move the ball toward opposite ends of the field. Players may kick, catch, fist, pick-up, and hand-ball the ball to move it towards the goal area they are attacking. Teams are awarded points for kicking the ball between goal posts. The number of points awarded depends upon the accuracy of the kick: 6 points
+for a ``goal'' between two inner goal posts, and 1 point for a ``\gls{behind}'' when the ball misses the inner goal area and instead goes between two outer posts. The team with the largest number of points at the end of the match wins. Draws are possible, but rare, due to the high-scoring nature of \arf{}.\footnote{To date, there have only been 158 draws in the entire recorded history of \afl{}, which represent just 1.03\% of all matches. Calculated from 1897-2018 match data from \url{afltables.com}, retrieved 2018-05-21} The results of multiple matches throughout a football season determine the ranking of the teams, culminating in a finals knock-out style tournament amongst the top teams to determine the team that wins the season.
+
+The match opens with a ``\gls{centrebounce}'' in which an umpire throws the ball vertically downward within the centre of the field such that it bounces up into the air marking start of play, and ruck players attempt to hit it towards their own team. When a team scores a goal, play is stopped, and the ball is returned to the centre of the field for the next \gls{centrebounce} to restart play. In the case of a \gls{behind}, the opposition is given possession of the ball and play restarts with a ``\gls{kick-in}'' from the end of the field. A match consists of four \glspl{quarter}, with a short break between each for players and spectators. At the end of each \gls{quarter} teams switch goal directions.
+
+Interchange and substitute players sit on an interchange bench at the side of the field. Player interchanges can occur at any time during the game, although the number of interchanges allowed per game is capped to
+120\footnote{Under 2015 rules. \url{http://www.afl.com.au/news/2015-09-03/sub-rule-abolished-interchange-cap-reduced}} for each team. The substitute player is intended as a replacement in the event of player injury, but is often used for strategic reasons instead.\footnote{Recent rule changes remove the dedicated substitute player role and instead have a fourth interchange player to be used at any time during the game}
+
+The rules permit a range of field sizes, so each field may have unique characteristics. The oval shape of the ball introduces an unpredictable element in the way that the ball bounces.
+
+\subsection{Comparison to other sports}
+
+Australian Rules Football is classified as a \emph{team invasion game}.
+Other games in this category include Association Football, % (Soccer),
+American/Canadian Football (Gridiron), Rugby League/Union, Polo / Water
+Polo, Lacrosse, Netball, Basketball, and Hockey / Ice Hockey
+\cite{Werner1996}. Invasion games are distinguished from the
+other classes of games by their sophisticated attack and defence tactics
+as each team attempts to claim territory from the other team.
+
+In contrast to Association Football (informally known as ``Soccer'' in Australia,
+or just ``Football'' internationally), scoring events in Australian
+Rules Football are frequent. In contrast to American Football, the rules
+of Australian Rules Football do not enforce any particular team
+formations or player roles. Thus players are free to adapt to different
+roles and positions during the course of the game.\footnote{Up until 2018.
+Rule changes proposed for the 2019 season intend to restrict players to certain zones
+based upon their role in order to reduce congestion (i.e. the tendency for all
+players on the field to chase after the ball, resulting in high player densities that
+slow play and can result in injuries)
+\url{https://www.adelaidenow.com.au/sport/afl/more-news/the-afl-could-introduce-zones-and-startingposition-rule-changes-in-2019/news-story/adeb3d1cbaf21ba09cf0bf6b3c0e9114}}

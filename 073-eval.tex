@@ -1,0 +1,20 @@
+\section{Feedback from Sport Performance Analysts}
+\label{ch:eval}
+
+Validating the work in this thesis is difficult, as it is unrealistic to expect coaches to immediately adopt the system. Even in the case that coaches were to adopt the system, the performance benefits will likely be small compared to the overall element of luck involved in the game, so the evidence would be anecdotal at best. Instead the system was informally evaluated by presenting it to four sport performance analysts at an elite AFL football club and requesting informal feedback as to which features that they found most useful.
+
+The system was demonstrated to show how it could be utilised to extract the following insights:
+
+\begin{enumerate}
+  \item Being able to visualise (and compare) team formations at time of \centrebounces{} and stoppages
+  \item Being able to quantitatively analyse team structures (e.g. how spread out the team is) and to monitor how this changes in attack/defence
+  \item Real-time\footnote{The research prototype used historic data; however, enhancing it to process real-time data streams would just be a matter of applying the additional software development effort to implement this feature.} monitoring of the time and location of interchanges/substitutions (where players come in from, and where the new player moves out to)
+  \item Being able to easily define new metrics/statistics (e.g. team shape length-to-width ratio) and breakdowns (e.g. comparing attack/defence) % previously width:height (changed to match literature)
+  \item Being able to verify and investigate analysis results by tracing them back to the underlying video footage and GPS visualisations used to calculate them
+\end{enumerate}
+
+Being able to \textit{quantitatively analyse team structures (e.g. how spread out the team is) and to monitor how this changes in attack/defence} was identified by all four of the analysts as the most important insight from this project. They expressed interest in not only being able to look at the team spread, but also how this changes over time.
+
+When asked whether the GPS visualisation provided benefits over existing approaches, two answered ``yes'', and two answered ``maybe''. However, due to the way this question was asked, it is possible that the ``maybe'' responses were talking about the visualisation itself rather than the additional analytics that are possible by building on top of this as a platform.
+
+The interest of sport performance analysts shows that there is value in using GPS data for team level strategic analysis, and that the work in this thesis has made this form of analysis more accessible.

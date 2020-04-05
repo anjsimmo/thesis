@@ -1,0 +1,28 @@
+\section{Chapter Summary}
+
+This chapter developed models to describe the state of an AFL game and the sport performance feedback process. While of a high-level theoretical nature that require simplification to use in practice, they allowed positioning the thesis within the larger context of sport. The chapter also established an abstract data model for describing spatio-temporal datasets, which was applied to describe the diversity of sport datasets available, including the player tracking dataset used in this thesis.
+
+\subsection*{Future Work}
+
+While the information theoretic framework presented in \secref{sec:info-theory-perspective} is not practical to utilise numerically at this stage, it is included as a foundation for further work and is used to motivate the rest of the thesis.
+
+Specifically, it provides a lens through which to answer Research Question 1 -- \textit{can team-level GPS analysis provide useful information to sport researchers and practitioners beyond what they already know from manual observation, video analysis, traditional statistics, and (individual) player GPS monitoring?} From an information theoretic lens, it becomes clear that the role of computational pipelines should be to provide coaches and sport performance analysts with insights that they cannot otherwise observe due to the limits of human information and processing channels. For this reason, the thesis seeks to design a platform for extracting new spatio-temporal insights into the game (see \chref{ch:integration}) in contrast to traditional summary statistics that tend to quantify aspects of the game that coaches can already observe.
+
+Further work is needed to calculate the information gain delivered by introducing more sophisticated sport analysis techniques that can surface previously untapped information from rich datasets, and to study the extent to which the information gain provided by an analysis technique correlates with sport performance analysts' perceptions of its usefulness. Accurately measuring the information gain requires more data than could be accessed for this thesis, but a brief proposal is outlined in \secref{sec:conclusioninfogain}.
+
+%
+% As set out in \chref{ch:modelling} (Modelling), the role of computational pipelines for spatio-temporal analysis of team sport is to provide coaches with insights that they cannot directly observe due to the limits of human information and processing channels. The feedback received when the system was presented to analysts at an elite AFL club suggests that quantitative investigation of team spread is an example of such information sought after by those at clubs. The analysis of team spread and game style presented in this thesis is an example of such an analysis, that is facilitated by the platform.
+
+
+
+%The information theoretic perspective itself is not novel, but the application to sport performance is new.
+
+
+\subsection*{Contributions}
+
+\begin{enumerate}
+  % \item Structured AFL jargon into a formal domain model of consistent terminology, and used this to identify variables that form part of the game state. While the full list of identified variables are too extensive to practically measure and model mathematically, comparing the list of variables incorporated in existing models to the full list of identified variables can increase awareness of the simplifying assumptions made by analytical models that may conflict with reality.
+  \item Structured AFL jargon into a formal domain model of consistent terminology, and used this to identify variables that form part of the game state. The full list of identified variables provides a holistic understanding of game state, and can increase awareness of the simplifying assumptions made by current sport analysis models.
+  \item Applied information theory to sport in order to provide a mathematically rigorous perspective for understanding the role of sport performance analysis systems within the larger sport context. Information theory was used to formalise the objective of performance analysis systems into a single formula, which states that the goal is to ensure information is valuable yet not already known to a coach, and incorporates the need to transmit this over limited human information channels.
+  \item Provided an abstract data model that permits modelling both dense and sparse spatio-temporal sport datasets, and draws attention to all required accuracy attributes that need to be specified in order to reason about the confidence of interpretations made from the dataset.
+\end{enumerate}
