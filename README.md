@@ -1,6 +1,6 @@
 # Computational Pipelines for Spatio-Temporal Analysis of Team Invasion Games
 
-_Andrew J. Simmons, 2019_
+_Anj Simmons, 2019_
 
 This repo contains all the LaTeX files and figures to generate my thesis.
 A pre-built PDF version can be found in the [`revisions`](revisions/) directory.
